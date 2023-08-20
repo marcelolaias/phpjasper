@@ -196,8 +196,14 @@ class JasperPHP
             throw new \Exception('Diretório inválido.', 1);
         }
 
-        if ($return_var != 0)
-            throw new \Exception("{$output[0]}", 1);
+        if ($return_var != 0) {
+            $err = "";
+            foreach ($output as $key => $value) {
+                $err .= $value . " ";
+            }
+            //throw new \Exception("{$output[0]}", 1);
+            throw new \Exception($err, 1);
+        }
 
         return $output;
     }
